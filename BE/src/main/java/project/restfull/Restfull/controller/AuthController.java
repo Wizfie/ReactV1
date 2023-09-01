@@ -1,10 +1,7 @@
 package project.restfull.Restfull.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import project.restfull.Restfull.entity.User;
 import project.restfull.Restfull.model.LoginUserRequest;
 import project.restfull.Restfull.model.TokenResponse;
@@ -15,6 +12,8 @@ import project.restfull.Restfull.service.UserService;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
+@CrossOrigin(origins="http://localhost:5173")
+
 public class AuthController {
 
     @Autowired
