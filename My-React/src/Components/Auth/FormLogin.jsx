@@ -4,41 +4,81 @@ import Logo from "../../assets/logo.png";
 import MyButton from "../Component/MyButton";
 import { useNavigate } from "react-router-dom";
 
-const FormLogin = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+import axios from "axios";
 
-  const navigate = useNavigate();
-  const Clicked = () => {
-    navigate("/register");
+const FormLogin = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChanger = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const Login = async (event) => {
+    event.preventDefault();
+    // console.log(formData);
+
+    const response = await axios
+      .post("http://localhost:8080/api/auth/login", JSON.stringify(formData), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    // try {
+    // console.log(response);
+
+    // 	// if (response.status === 200) {
+    // 	// 	const data = response.data;
+    // 	// 	console.log(data);
+    // 	// 	// localStorage.setItem("token", data.token);
+    // 	// 	// localStorage.setItem("token", data.expiredAt);
+    // 	// }
+    // } catch (error) {
+    // 	console.log(error);
+    // }
   };
 
   return (
     <>
-      <div className="login-container">
-        <div className="tittle-login">Login Page</div>
-        <img src={Logo} className="logo" alt="Logo"></img>
-        <InputText
-          label="Username"
-          value={username}
-          type="text"
-          placeholder="username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <InputText
-          label="Password"
-          value={password}
-          type="password"
-          placeholder="*********"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <MyButton
-          onClick={() => Clicked()}
-          className="btn btn-active btn-warning"
-          name="Login"
-          id="btn-login"
-        />
-      </div>
+      <form onSubmit={Login}>
+        <div className="login-container">
+          <div className="tittle-login">Login Page</div>
+          <img src={Logo} className="logo"></img>
+          <InputText
+            label="Username"
+            value={formData.username}
+            name="username"
+            type="text"
+            onChange={handleChanger}
+            placeholder="Username"
+          />
+          <InputText
+            label="Password"
+            value={formData.password}
+            name="password"
+            type="password"
+            onChange={handleChanger}
+            placeholder="*********"
+          />
+          <MyButton
+            className="btn btn-active btn-warning"
+            name="Login"
+            id="btn-login"
+          />
+        </div>
+      </form>
     </>
   );
 };

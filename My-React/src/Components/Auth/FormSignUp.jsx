@@ -5,25 +5,37 @@ import MyButton from "../Component/MyButton";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
 const FormSignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     username: "",
     password: "",
   });
+};
 
-  const handleChanger = (event) => {
-    const { name, value } = event.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+const handleChanger = (event) => {
+  const { name, value } = event.target;
+  setFormData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+const Register = async (event) => {
+  event.preventDefault();
 
-    console.log(JSON.stringify(formData));
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/api/users",
+      JSON.stringify(formData),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     try {
       const response = await axios.post(
@@ -51,7 +63,9 @@ const FormSignUp = () => {
         console.log("Error sending request:", error.message);
       }
     }
-  };
+  } finally {
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
