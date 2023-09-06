@@ -3,6 +3,7 @@ import InputText from "../Component/InputText";
 import Logo from "../../assets/logo.png";
 import MyButton from "../Component/MyButton";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const FormSignUp = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ const FormSignUp = () => {
         alert("Registration Successful");
         console.log("Register Success");
         console.log("Data sent:", formData);
-        // history.push("/");
+        Navigate("/");
       } else {
         console.log("Registration Failed");
       }
@@ -57,6 +58,7 @@ const FormSignUp = () => {
         <div className="login-container">
           <div className="tittle-sign-up">Register</div>
           <img src={Logo} className="logo" alt="Logo" />
+
           <InputText
             label="Name"
             value={formData.name}
@@ -65,6 +67,7 @@ const FormSignUp = () => {
             onChange={handleChanger}
             placeholder="name"
           />
+
           <InputText
             label="Username"
             value={formData.username}

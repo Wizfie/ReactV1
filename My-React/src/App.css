@@ -1,46 +1,87 @@
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .login-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 38em;
-	width: 24em;
-	background-color: red;
-	margin: 0 auto;
-	margin-top: 50px;
-	border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 38em;
+  width: 24em;
+  background-color: red;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 12px;
 }
 .tittle-login {
-	font-size: 32px;
-	color: #ffffff;
+  font-size: 32px;
+  color: #ffffff;
 }
 
 .tittle-sign-up {
-	font-size: 32px;
-	color: #ffffff;
+  font-size: 32px;
+  color: #ffffff;
 }
 
 .logo {
-	width: 200px;
+  width: 200px;
 }
 .label-input {
-	display: flex;
-	color: #ffffff;
+  display: flex;
+  color: #ffffff;
 }
 
 #btn-login {
-	width: 20rem;
-	margin-top: 8px;
-	color: #ffffff;
+  width: 20rem;
+  margin-top: 8px;
+  color: #ffffff;
 }
 
 #btn-sign-up {
-	width: 20rem;
-	margin-top: 8px;
-	color: #ffffff;
+  width: 20rem;
+  margin-top: 8px;
+  color: #ffffff;
+}
+
+/* Sidebar.css */
+.sidebar {
+  width: 250px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: #333;
+  color: #fff;
+}
+
+.sidebar-tittle {
+  display: block;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  margin-top: 8px;
+  background-color: cadetblue;
+  border-radius: 5px;
+  padding: 24px;
+}
+
+.option-sidebar {
+  text-align: center;
+  margin-top: 5rem;
+}
+.option-sidebar a {
+  display: block;
+  margin-bottom: 4em;
+  border-radius: 5px;
+}
+.option-sidebar :last-child {
+  margin-top: 30rem;
+  right: 80px;
+  display: block;
+}
+
+.option-sidebar a:hover {
+  background-color: gray;
+  padding: 8px;
 }
